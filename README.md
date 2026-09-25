@@ -4,12 +4,12 @@ Helper wrapper around [`puppeteer-core`](https://www.npmjs.com/package/puppeteer
 
 ## Features
 
-- 🔄 **Reuses an existing Chrome instance** if one is already running on the debug port, avoiding redundant launches.
-- 🚀 **Auto-launches Chrome** with a persistent user profile when none is found.
-- 👤 **Persistent user data directory**, so cookies, logins, and extensions survive across runs.
-- 🖥️ Sensible defaults for window size, viewport, and a realistic desktop `User-Agent`.
-- 🔇 Silences `console.log` inside pages opened via `browser.newPage()`.
-- 🧩 Built on top of [`@ndiinginc/chrome-path`](https://www.npmjs.com/package/@ndiinginc/chrome-path) to auto-resolve the local Chrome executable.
+- **Reuses an existing Chrome instance** if one is already running on the debug port, avoiding redundant launches.
+- **Auto-launches Chrome** with a persistent user profile when none is found.
+- **Persistent user data directory**, so cookies, logins, and extensions survive across runs.
+- Sensible defaults for window size, viewport, and a realistic desktop `User-Agent`.
+- Silences `console.log` inside pages opened via `browser.newPage()`.
+- Built on top of [`@ndiinginc/chrome-path`](https://www.npmjs.com/package/@ndiinginc/chrome-path) to auto-resolve the local Chrome executable.
 
 ## Installation
 
@@ -71,7 +71,7 @@ Returns a connected [`puppeteer-core` `Browser`](https://pptr.dev/api/puppeteer.
 | `darwin` | `~/Library/Application Support/App Name`      |
 | other    | `~/.config/app-name`                          |
 
-> ⚠️ Update the `"App Name"` / `"app-name"` placeholders in `getUserDataDir()` to match your actual application/product name before publishing, so the profile directory doesn't collide with unrelated apps.
+> Update the `"App Name"` / `"app-name"` placeholders in `getUserDataDir()` to match your actual application/product name before publishing, so the profile directory doesn't collide with unrelated apps.
 
 ### Behavior notes
 
