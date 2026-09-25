@@ -32,14 +32,7 @@ function getUserDataDir() {
     }
 }
 
-async function ensureChromeInstance({
-    executablePath,
-    userDataDir,
-    profileDirectory,
-    headless,
-    devtools,
-    userAgent,
-} = {}) {
+async function ensureChromeInstance({ executablePath, userDataDir, profileDirectory, headless, devtools, userAgent } = {}) {
     let webSocketDebuggerUrl = await isChromeRunning();
     if (webSocketDebuggerUrl) {
         return webSocketDebuggerUrl;
@@ -48,15 +41,7 @@ async function ensureChromeInstance({
     const width = 1920;
     const height = 1080;
 
-    const args = [
-        `--remote-debugging-port=${PORT}`,
-        "--no-first-run",
-        "--no-default-browser-check",
-        "--start-maximized",
-        `--window-size=${width},${height}`,
-        `--ozone-override-screen-size=${width},${height}`,
-        `--screen-info={${width}x${height}}`,
-    ];
+    const args = [`--remote-debugging-port=${PORT}`, "--no-first-run", "--no-default-browser-check", "--start-maximized", `--window-size=${width},${height}`, `--ozone-override-screen-size=${width},${height}`, `--screen-info={${width}x${height}}`];
 
     if (userAgent) args.push(`--user-agent=${userAgent}`);
     if (userDataDir) args.push(`--user-data-dir=${userDataDir}`);
@@ -85,16 +70,7 @@ async function ensureChromeInstance({
  * @returns {Promise<import('puppeteer-core').Browser>}
  */
 async function launch(options = {}) {
-    const {
-        executablePath = chromePath(),
-        defaultViewport = null,
-        userDataDir = getUserDataDir(),
-        profileDirectory = "Default",
-        headless = true,
-        devtools = false,
-        userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
-        ...restOptions
-    } = options;
+    const { executablePath = chromePath(), defaultViewport = null, userDataDir = getUserDataDir(), profileDirectory = "Default", headless = true, devtools = false, userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36", ...restOptions } = options;
 
     const browserWSEndpoint = await ensureChromeInstance({
         executablePath,

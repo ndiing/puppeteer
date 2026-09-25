@@ -52,24 +52,24 @@ Because the launched Chrome process is `detached` and `unref()`'d, it keeps runn
 
 Returns a connected [`puppeteer-core` `Browser`](https://pptr.dev/api/puppeteer.browser) instance.
 
-| Option              | Type      | Default                                             | Description                                                                 |
-|---------------------|-----------|------------------------------------------------------|-------------------------------------------------------------------------------|
-| `executablePath`    | `string`  | resolved via `@ndiinginc/chrome-path`                | Path to the Chrome executable.                                               |
-| `defaultViewport`   | `object`  | `null`                                                | Passed through to `puppeteer-core`'s `connect()`.                           |
-| `userDataDir`       | `string`  | OS-specific app data path (see below)                | Chrome user-data directory, for a persistent profile.                       |
-| `profileDirectory`  | `string`  | `"Default"`                                           | Chrome profile folder name (e.g. `"Default"`, `"Profile 1"`).               |
-| `headless`          | `boolean` | `true`                                                | Launches Chrome with `--headless=new` when `true`.                          |
-| `devtools`          | `boolean` | `false`                                               | Auto-opens DevTools for new tabs.                                            |
-| `userAgent`         | `string`  | a desktop Chrome/Windows UA string                    | Overrides the browser's User-Agent.                                          |
-| `...restOptions`    | `object`  | —                                                      | Any other `puppeteer-core` `connect()` option (forwarded as-is).            |
+| Option             | Type      | Default                               | Description                                                      |
+| ------------------ | --------- | ------------------------------------- | ---------------------------------------------------------------- |
+| `executablePath`   | `string`  | resolved via `@ndiinginc/chrome-path` | Path to the Chrome executable.                                   |
+| `defaultViewport`  | `object`  | `null`                                | Passed through to `puppeteer-core`'s `connect()`.                |
+| `userDataDir`      | `string`  | OS-specific app data path (see below) | Chrome user-data directory, for a persistent profile.            |
+| `profileDirectory` | `string`  | `"Default"`                           | Chrome profile folder name (e.g. `"Default"`, `"Profile 1"`).    |
+| `headless`         | `boolean` | `true`                                | Launches Chrome with `--headless=new` when `true`.               |
+| `devtools`         | `boolean` | `false`                               | Auto-opens DevTools for new tabs.                                |
+| `userAgent`        | `string`  | a desktop Chrome/Windows UA string    | Overrides the browser's User-Agent.                              |
+| `...restOptions`   | `object`  | —                                     | Any other `puppeteer-core` `connect()` option (forwarded as-is). |
 
 **Default `userDataDir` by platform:**
 
-| Platform  | Path                                                          |
-|-----------|----------------------------------------------------------------|
-| `win32`   | `%HOMEPATH%\AppData\Local\App Name\User Data`                 |
-| `darwin`  | `~/Library/Application Support/App Name`                       |
-| other     | `~/.config/app-name`                                           |
+| Platform | Path                                          |
+| -------- | --------------------------------------------- |
+| `win32`  | `%HOMEPATH%\AppData\Local\App Name\User Data` |
+| `darwin` | `~/Library/Application Support/App Name`      |
+| other    | `~/.config/app-name`                          |
 
 > ⚠️ Update the `"App Name"` / `"app-name"` placeholders in `getUserDataDir()` to match your actual application/product name before publishing, so the profile directory doesn't collide with unrelated apps.
 
